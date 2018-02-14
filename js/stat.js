@@ -16,6 +16,13 @@ window.renderStatistics = function (ctx, names, times) {
     return (Math.random() * (max - min) + min).toFixed(1);
   };
 
+  var getColor = function (name) {
+    if (name === 'Вы') {
+      return 'rgba(255, 0, 0, 1)';
+    }
+    return 'rgba(0, 0, 255, ' + getRandom(minOpacity, maxOpacity) + ')';
+  };
+
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(110, 20, 420, 270);
   ctx.fillStyle = '#ffffff';
@@ -27,8 +34,7 @@ window.renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < times.length; i++) {
     var barHeight = initialY - Math.floor(times[i]) * step - indentAfterColumn;
-
-    ctx.fillStyle = names[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255, ' + getRandom(minOpacity, maxOpacity) + ')';
+    ctx.fillStyle = getColor(names[i]);
     ctx.fillRect(initialX + indent * i, barHeight, barWidth, Math.floor(times[i]) * step);
     ctx.fillStyle = '#000000';
     ctx.fillText(names[i], initialX + indent * i, initialY);
