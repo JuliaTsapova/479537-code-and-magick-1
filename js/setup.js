@@ -2,10 +2,35 @@
 
 var COUNT = 4;
 var wizardParams = {
-  FIRST_NAME: ['Иван', 'Хуан Себастьян', 'Мария', 'Кристов', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'],
-  SURNAME: [' да Марья', ' Верон', ' Мирабелла', ' Вальц', ' Онопко', ' Топольницкая', ' Нионго', ' Ирвинг'],
-  COAT_COLOR: ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'],
-  EYES_COLOR: ['black', 'red', 'blue', 'yellow', 'green']
+  firstName: [
+    'Иван',
+    'Хуан Себастьян',
+    'Мария',
+    'Кристов',
+    'Виктор',
+    'Юлия',
+    'Люпита',
+    'Вашингтон'
+  ],
+  surname: [
+    ' да Марья',
+    ' Верон',
+    ' Мирабелла',
+    ' Вальц',
+    ' Онопко',
+    ' Топольницкая',
+    ' Нионго',
+    ' Ирвинг'
+  ],
+  coatColor: [
+    'rgb(101, 137, 164)',
+    'rgb(241, 43, 107)',
+    'rgb(146, 100, 161)',
+    'rgb(56, 159, 117)',
+    'rgb(215, 210, 55)',
+    'rgb(0, 0, 0)'
+  ],
+  eyesColor: ['black', 'red', 'blue', 'yellow', 'green']
 };
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
@@ -23,10 +48,12 @@ var renderWizard = function (data) {
 };
 
 var getWizard = function () {
+  var wizardName = wizardParams.firstName[getRandomNumber(wizardParams.firstName.length)];
+  var wizardSurname = wizardParams.surname[getRandomNumber(wizardParams.surname.length)];
   return {
-    name: wizardParams.FIRST_NAME[getRandomNumber(wizardParams.FIRST_NAME.length)] + wizardParams.SURNAME[getRandomNumber(wizardParams.SURNAME.length)],
-    coatColor: wizardParams.COAT_COLOR[getRandomNumber(wizardParams.COAT_COLOR.length)],
-    eyesColor: wizardParams.EYES_COLOR[getRandomNumber(wizardParams.EYES_COLOR.length)]
+    name: wizardName + wizardSurname,
+    coatColor: wizardParams.coatColor[getRandomNumber(wizardParams.coatColor.length)],
+    eyesColor: wizardParams.eyesColor[getRandomNumber(wizardParams.eyesColor.length)]
   };
 };
 
